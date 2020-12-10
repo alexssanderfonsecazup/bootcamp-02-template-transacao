@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class EventoDeTransacao {
+
     private String id;
     private BigDecimal valor;
     private EventoDeTransacaoEstabelecimento estabelecimento;
@@ -15,23 +16,12 @@ public class EventoDeTransacao {
     private LocalDateTime efetivadaEm;
 
 
-    public Transacao toModel(){
+    public Transacao toModel() {
         Estabelecimento estabelecimento = new Estabelecimento(this.estabelecimento.getNome(),
-                this.estabelecimento.getCidade(),this.estabelecimento.getEndereco());
-        Cartao cartao = new Cartao(this.cartao.getId(),this.cartao.getEmail());
-        return new Transacao(id,valor,estabelecimento,cartao,efetivadaEm);
+                this.estabelecimento.getCidade(), this.estabelecimento.getEndereco());
+        Cartao cartao = new Cartao(this.cartao.getId(), this.cartao.getEmail());
+        return new Transacao(id, valor, estabelecimento, efetivadaEm, cartao);
 
-    }
-
-    @Override
-    public String toString() {
-        return "EventoDeTransacao{" +
-                "id='" + id + '\'' +
-                ", valor=" + valor +
-                ", estabelecimento=" + estabelecimento +
-                ", cartao=" + cartao +
-                ", efetivadaEm=" + efetivadaEm +
-                '}';
     }
 
     public String getId() {

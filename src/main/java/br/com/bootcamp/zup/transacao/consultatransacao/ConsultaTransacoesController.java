@@ -25,26 +25,19 @@ public class ConsultaTransacoesController {
     @PersistenceContext
     EntityManager entityManager;
 
-    @Value("${transacao.idcartao.estimular}")
-    private  String cartoesEstimulado;
+    @GetMapping
+    public ResponseEntity<?> consultaTransacoes(@RequestParam(name = "idCartao") String idCartao) {
 
-    @Value("${transacao.email.logado}")
-    private  String emailUsuarioLogado;
-
-    @GetMapping("/{idCartao}")
-    public ResponseEntity <?> consultaTransacoes(@PathVariable UUID idCartao){
-
-        Cartao cartao = entityManager.find(Cartao.class,idCartao);
-        if(cartao == null){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Cartão nao encontrado");
+        Cartao cartao = entityManager.find(Cartao.class, idCartao);
+        if (cartao == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cartão não encontrado");
         }
-        List<Transacao> transacoes = entityManager.createQuery("SELECT t FROM Transacao t ORDER BY t.efetivadaEm ASC WHERE t.id = :idCartao",Transacao.class)
-                .setParameter("idCartao",idCartao)
+
+        List<Transacao> transacoes = entityManager.createQuery("SELECT t FROM Transacao t WHERE t.cartao.id = :idCartao ORDER BY t.efetivadaEm DESC ", Transacao.class)
+                .setParameter("idCartao", idCartao)
                 .setMaxResults(10).getResultList();
         return ResponseEntity.ok(TransacaoResponse.toList(transacoes));
     }
-
-
 
 
 }

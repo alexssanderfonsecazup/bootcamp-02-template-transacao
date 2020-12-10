@@ -1,25 +1,45 @@
 package br.com.bootcamp.zup.transacao.consometransacao;
 
-import javax.persistence.Embeddable;
+import br.com.bootcamp.zup.transacao.consultatransacao.Transacao;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
-@Embeddable
+@Entity
 public class Cartao {
 
-    private String idCartao;
+    @Id
+    private String id;
     @NotBlank
     private String email;
+
+
+    @OneToMany(mappedBy = "cartao")
+    @NotNull
+    private Set<Transacao> transacoes;
 
     @Deprecated
     public Cartao(){}
 
-    public Cartao(@NotNull String idCartao, @NotBlank String email) {
-        this.idCartao = idCartao;
+    public Cartao(@NotNull String id, @NotBlank String email) {
+        this.id = id;
         this.email = email;
     }
 
-    public String getIdCartao() {
-        return idCartao;
+    public Set<Transacao> getTransacoes() {
+        return transacoes;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setTransacoes(Set<Transacao> transacoes) {
+        this.transacoes = transacoes;
     }
 }

@@ -3,9 +3,7 @@ package br.com.bootcamp.zup.transacao.consultatransacao;
 import br.com.bootcamp.zup.transacao.consometransacao.Cartao;
 import br.com.bootcamp.zup.transacao.consometransacao.Estabelecimento;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
@@ -24,27 +22,29 @@ public class Transacao {
     @Embedded
     private Estabelecimento estabelecimento;
 
-    @Embedded
-    @NotNull
-    private Cartao cartao;
-
     @NotNull
     private LocalDateTime efetivadaEm;
 
+    @ManyToOne(cascade = CascadeType.PERSIST )
+    @JoinColumn(name ="cartao_id")
+    private Cartao cartao;
+
     public Transacao(){}
 
-    public Transacao(@NotNull String id, @NotNull @Positive BigDecimal valor,
-                     @NotNull Estabelecimento estabelecimento, @NotNull  Cartao cartao,
-                     @NotNull LocalDateTime efetivadaEm) {
+    public Transacao(@NotNull String id, @NotNull @Positive BigDecimal valor, @NotNull Estabelecimento estabelecimento, @NotNull LocalDateTime efetivadaEm, Cartao cartao) {
         this.id = id;
         this.valor = valor;
         this.estabelecimento = estabelecimento;
-        this.cartao = cartao;
         this.efetivadaEm = efetivadaEm;
+        this.cartao = cartao;
     }
 
     public String getId() {
         return id;
+    }
+
+    public Cartao getCartao() {
+        return cartao;
     }
 
     public BigDecimal getValor() {
@@ -53,10 +53,6 @@ public class Transacao {
 
     public Estabelecimento getEstabelecimento() {
         return estabelecimento;
-    }
-
-    public Cartao getCartao() {
-        return cartao;
     }
 
     public LocalDateTime getEfetivadaEm() {

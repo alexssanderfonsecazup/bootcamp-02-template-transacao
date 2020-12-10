@@ -32,9 +32,9 @@ public class TransacaoResponse {
 
     public TransacaoResponse(Transacao transacao){
         this.id = transacao.getId();
+        this.idCartao = transacao.getCartao().getId();
         this.valor = transacao.getValor();
         this.nomeEstabelecimento = transacao.getEstabelecimento().getNome();
-        this.idCartao = transacao.getCartao().getIdCartao();
         this.efetivadaEm = transacao.getEfetivadaEm();
     }
     public static List<TransacaoResponse> toList(List<Transacao> transacoes){
