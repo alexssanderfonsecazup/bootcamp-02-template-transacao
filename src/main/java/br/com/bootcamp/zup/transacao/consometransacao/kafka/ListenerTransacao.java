@@ -34,15 +34,14 @@ public class ListenerTransacao {
             return;
         }
         Transacao transacao = eventoDeTransacao.toModel();
-        entityManager.createQuery("INSERT INTO transacao (id, efetivada_em, cidade, endereco, nome, valor,cartao_id) VALUES (:id,:efetivada_em,:cidade,:endereco,:nome,:valor,:cartao_id)")
-
-                .setParameter("id", eventoDeTransacao.getId())
-                .setParameter("efetivada_em", eventoDeTransacao.getEfetivadaEm())
-                .setParameter("cidade", eventoDeTransacao.getEstabelecimento().getCidade())
-                .setParameter("endereco", eventoDeTransacao.getEstabelecimento().getEndereco())
-                .setParameter("nome", eventoDeTransacao.getEstabelecimento().getNome())
-                .setParameter("valor", eventoDeTransacao.getValor())
-                .setParameter("cartao_id",cartaoPersistido.getId())
+        entityManager.createNativeQuery("INSERT INTO transacao (id, efetivada_em, cidade, endereco, nome, valor,cartao_id) VALUES (?,?,?,?,?,?,?)")
+                .setParameter(1, eventoDeTransacao.getId())
+                .setParameter(2, eventoDeTransacao.getEfetivadaEm())
+                .setParameter(3, eventoDeTransacao.getEstabelecimento().getCidade())
+                .setParameter(4, eventoDeTransacao.getEstabelecimento().getEndereco())
+                .setParameter(5, eventoDeTransacao.getEstabelecimento().getNome())
+                .setParameter(6, eventoDeTransacao.getValor())
+                .setParameter(7,cartaoPersistido.getId())
                 .executeUpdate();
         logger.info("Nova transação {} associada ao cartao {}",transacao.getId(),transacao.getCartao().getId());
 
