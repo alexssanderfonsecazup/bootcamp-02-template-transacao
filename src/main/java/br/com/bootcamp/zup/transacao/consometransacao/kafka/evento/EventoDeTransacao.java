@@ -1,12 +1,11 @@
-package br.com.bootcamp.zup.transacao.kafka.evento;
+package br.com.bootcamp.zup.transacao.consometransacao.kafka.evento;
 
-import br.com.bootcamp.zup.transacao.Cartao;
-import br.com.bootcamp.zup.transacao.Estabelecimento;
-import br.com.bootcamp.zup.transacao.Transacao;
+import br.com.bootcamp.zup.transacao.consometransacao.Cartao;
+import br.com.bootcamp.zup.transacao.consometransacao.Estabelecimento;
+import br.com.bootcamp.zup.transacao.consultatransacao.Transacao;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 public class EventoDeTransacao {
     private String id;

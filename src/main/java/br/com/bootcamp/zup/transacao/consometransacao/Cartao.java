@@ -1,4 +1,4 @@
-package br.com.bootcamp.zup.transacao;
+package br.com.bootcamp.zup.transacao.consometransacao;
 
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotBlank;

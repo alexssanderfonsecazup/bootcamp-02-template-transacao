@@ -1,4 +1,4 @@
-package br.com.bootcamp.zup.transacao.kafka.evento;
+package br.com.bootcamp.zup.transacao.consometransacao.kafka.evento;
 
 public class EventoDeTransacaoEstabelecimento {
     private String nome;

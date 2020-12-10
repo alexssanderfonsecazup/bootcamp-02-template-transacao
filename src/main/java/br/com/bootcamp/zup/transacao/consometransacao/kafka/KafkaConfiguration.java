@@ -1,6 +1,6 @@
-package br.com.bootcamp.zup.transacao.kafka;
+package br.com.bootcamp.zup.transacao.consometransacao.kafka;
 
-import br.com.bootcamp.zup.transacao.kafka.evento.EventoDeTransacao;
+import br.com.bootcamp.zup.transacao.consometransacao.kafka.evento.EventoDeTransacao;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;

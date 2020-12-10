@@ -1,4 +1,4 @@
-package br.com.bootcamp.zup.transacao;
+package br.com.bootcamp.zup.transacao.consultatransacao;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;

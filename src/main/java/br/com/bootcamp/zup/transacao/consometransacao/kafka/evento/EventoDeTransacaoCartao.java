@@ -1,6 +1,4 @@
-package br.com.bootcamp.zup.transacao.kafka.evento;
-
-import java.util.UUID;
+package br.com.bootcamp.zup.transacao.consometransacao.kafka.evento;
 
 public class EventoDeTransacaoCartao {
     private String id;

@@ -1,4 +1,7 @@
-package br.com.bootcamp.zup.transacao;
+package br.com.bootcamp.zup.transacao.consultatransacao;
+
+import br.com.bootcamp.zup.transacao.consometransacao.Cartao;
+import br.com.bootcamp.zup.transacao.consometransacao.Estabelecimento;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;

@@ -1,22 +1,26 @@
-package br.com.bootcamp.zup.transacao;
+package br.com.bootcamp.zup.transacao.consometransacao;
 
+import br.com.bootcamp.zup.transacao.integracao.TransacaoClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/transacoes")
-public class ConsultaTransacoesController {
+@RequestMapping("/estimulos")
+public class EstimulaTransacaoController {
+
 
     @Autowired
     private TransacaoClient transacaoClient;
 
-    @Autowired
-    private TransacaoRepository transacaoRepository;
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Value("${transacao.idcartao.estimular}")
     private  String cartoesEstimulado;
@@ -24,11 +28,6 @@ public class ConsultaTransacoesController {
     @Value("${transacao.email.logado}")
     private  String emailUsuarioLogado;
 
-    @GetMapping
-    public ResponseEntity <?> consultaTransacoes(){
-        List<Transacao> transacoes = transacaoRepository.findAll();
-        return ResponseEntity.ok(TransacaoResponse.toList(transacoes));
-    }
 
     @PostMapping
     public void subscreverEnvioTransacao(){
@@ -37,6 +36,7 @@ public class ConsultaTransacoesController {
 
     public void desinscreverEnvioTransacao(){
     }
+
 
 
 }
