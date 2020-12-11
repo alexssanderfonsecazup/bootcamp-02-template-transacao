@@ -34,6 +34,7 @@ public class ListenerTransacao {
             return;
         }
         Transacao transacao = eventoDeTransacao.toModel();
+
         entityManager.createNativeQuery("INSERT INTO transacao (id, efetivada_em, cidade, endereco, nome, valor,cartao_id) VALUES (?,?,?,?,?,?,?)")
                 .setParameter(1, eventoDeTransacao.getId())
                 .setParameter(2, eventoDeTransacao.getEfetivadaEm())
