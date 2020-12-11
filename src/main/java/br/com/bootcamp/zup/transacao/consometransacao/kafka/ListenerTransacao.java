@@ -24,6 +24,7 @@ public class ListenerTransacao {
     @Transactional
     public void escutaPorTransacoes(EventoDeTransacao eventoDeTransacao) {
 
+        logger.info("Transacao {} recebida",eventoDeTransacao.getId());
         String id = eventoDeTransacao.getCartao().getId();
         Cartao cartaoPersistido = entityManager.find(Cartao.class, id);
         if (cartaoPersistido == null) {
