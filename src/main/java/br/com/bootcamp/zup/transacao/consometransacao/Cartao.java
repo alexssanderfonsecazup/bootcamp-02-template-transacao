@@ -20,7 +20,6 @@ public class Cartao {
 
 
     @OneToMany(mappedBy = "cartao")
-    @NotNull
     private Set<Transacao> transacoes;
 
     @Deprecated
