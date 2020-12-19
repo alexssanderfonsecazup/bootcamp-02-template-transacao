@@ -2,7 +2,6 @@ package br.com.bootcamp.zup.transacao.consometransacao;
 
 import br.com.bootcamp.zup.transacao.consultatransacao.Transacao;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;

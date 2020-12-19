@@ -3,7 +3,6 @@ package br.com.bootcamp.zup.transacao.consultatransacao;
 import br.com.bootcamp.zup.transacao.consometransacao.Cartao;
 import br.com.bootcamp.zup.transacao.integracao.TransacaoClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+
 
 @RestController
 @RequestMapping("/transacoes")
